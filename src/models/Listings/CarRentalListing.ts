@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
-import { Listing, type IListing } from "./Listing.js";
-import { PROVIDER_CATEGORIES } from "../../config/constants.js";
+import { Listing, IListing } from "./Listing";
+import { PROVIDER_CATEGORIES } from "../../config/constants";
 
 export interface ICarRentalListing extends IListing {
   make?: string;

@@ -2,62 +2,26 @@
 // be registered before its discriminators attach to it. Importing this
 // single file from server.ts guarantees that.
 
-export { User, type IUser } from "./User.js";
-export { Provider, type IProvider } from "./Provider.js";
-export { Booking, type IBooking } from "./Booking.js";
-export { Wallet, type IWallet } from "./Wallet.js";
-export { Transaction, type ITransaction } from "./Transaction.js";
-export { Review, type IReview } from "./Review.js";
-export { Conversation, type IConversation } from "./Conversation.js";
-export { Message, type IMessage } from "./Message.js";
-export { Notification, type INotification } from "./Notification.js";
+export { User, IUser } from "./User";
+export { Provider, IProvider } from "./Provider";
+export { Booking, IBooking } from "./Booking";
+export { Wallet, IWallet } from "./Wallet";
+export { Transaction, ITransaction } from "./Transaction";
+export { Review, IReview } from "./Review";
+export { Conversation, IConversation } from "./Conversation";
+export { Message, IMessage } from "./Message";
+export { Notification, INotification } from "./Notification";
 
-export { Listing, type IListing } from "../models/Listings/Listing.js";
-export {
-  HotelListing,
-  type IHotelListing,
-} from "../models/Listings/HotelListing.js";
-export {
-  AirbnbListing,
-  type IAirbnbListing,
-} from "../models/Listings/AirbnbListing.js";
-export {
-  CarRentalListing,
-  type ICarRentalListing,
-} from "../models/Listings/CarRentalListing.js";
-export {
-  FoodVendorListing,
-  type IFoodVendorListing,
-} from "../models/Listings/FoodVendorListing.js";
-export {
-  SalonListing,
-  type ISalonListing,
-} from "../models/Listings/SalonListing.js";
-export {
-  AirlineListing,
-  type IAirlineListing,
-} from "../models/Listings/AirlineListing.js";
-export {
-  TourGuideListing,
-  type ITourGuideListing,
-} from "../models/Listings/TourGuideListing.js";
-export {
-  MakeupArtistListing,
-  type IMakeupArtistListing,
-} from "../models/Listings/MakeupArtistListing.js";
-export {
-  PhotographerListing,
-  type IPhotographerListing,
-} from "../models/Listings/PhotographerListing.js";
-export {
-  EventCenterListing,
-  type IEventCenterListing,
-} from "../models/Listings/EventCenterListing.js";
-export {
-  MassageTherapyListing,
-  type IMassageTherapyListing,
-} from "../models/Listings/MassageTherapyListing.js";
-export {
-  TherapyListing,
-  type ITherapyListing,
-} from "../models/Listings/TherapyListing.js";
+export { Listing, IListing } from "./listings/Listing";
+export { HotelListing, IHotelListing } from "./listings/HotelListing";
+export { AirbnbListing, IAirbnbListing } from "./listings/AirbnbListing";
+export { CarRentalListing, ICarRentalListing } from "./listings/CarRentalListing";
+export { FoodVendorListing, IFoodVendorListing } from "./listings/FoodVendorListing";
+export { SalonListing, ISalonListing } from "./listings/SalonListing";
+export { AirlineListing, IAirlineListing } from "./listings/AirlineListing";
+export { TourGuideListing, ITourGuideListing } from "./listings/TourGuideListing";
+export { MakeupArtistListing, IMakeupArtistListing } from "./listings/MakeupArtistListing";
+export { PhotographerListing, IPhotographerListing } from "./listings/PhotographerListing";
+export { EventCenterListing, IEventCenterListing } from "./listings/EventCenterListing";
+export { MassageTherapyListing, IMassageTherapyListing } from "./listings/MassageTherapyListing";
+export { TherapyListing, ITherapyListing } from "./listings/TherapyListing";

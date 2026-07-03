@@ -1,9 +1,5 @@
 import mongoose, { Schema, Document, Model, Types } from "mongoose";
-import {
-  LISTING_STATUS,
-  type ListingStatus,
-  type ProviderCategory,
-} from "../../config/constants.js";
+import { LISTING_STATUS, ListingStatus, ProviderCategory } from "../../config/constants";
 
 export interface IMedia {
   url: string;
@@ -59,12 +55,7 @@ const listingSchema = new Schema<IListing>(
     title: { type: String, required: true, trim: true },
     description: { type: String },
 
-    media: [
-      {
-        url: String,
-        type: { type: String, enum: ["IMAGE", "VIDEO"], default: "IMAGE" },
-      },
-    ],
+    media: [{ url: String, type: { type: String, enum: ["IMAGE", "VIDEO"], default: "IMAGE" } }],
 
     basePrice: { type: Number, required: true },
     currency: { type: String, default: "NGN" },
@@ -96,7 +87,4 @@ listingSchema.index({ title: "text", description: "text", tags: "text" });
 listingSchema.index({ category: 1, status: 1 });
 listingSchema.index({ "location.city": 1, category: 1 });
 
-export const Listing: Model<IListing> = mongoose.model<IListing>(
-  "Listing",
-  listingSchema
-);
+export const Listing: Model<IListing> = mongoose.model<IListing>("Listing", listingSchema);

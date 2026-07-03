@@ -15,12 +15,7 @@ export interface IReview extends Document {
 
 const reviewSchema = new Schema<IReview>(
   {
-    booking: {
-      type: Schema.Types.ObjectId,
-      ref: "Booking",
-      required: true,
-      unique: true,
-    },
+    booking: { type: Schema.Types.ObjectId, ref: "Booking", required: true, unique: true },
     listing: { type: Schema.Types.ObjectId, ref: "Listing", required: true },
     provider: { type: Schema.Types.ObjectId, ref: "Provider", required: true },
     author: { type: Schema.Types.ObjectId, ref: "User", required: true },
@@ -32,12 +27,7 @@ const reviewSchema = new Schema<IReview>(
   { timestamps: true }
 );
 
-// one review per booking — enforced at the schema level, not just app logic
-reviewSchema.index({ booking: 1 }, { unique: true });
 reviewSchema.index({ listing: 1, createdAt: -1 });
 reviewSchema.index({ provider: 1 });
 
-export const Review: Model<IReview> = mongoose.model<IReview>(
-  "Review",
-  reviewSchema
-);
+export const Review: Model<IReview> = mongoose.model<IReview>("Review", reviewSchema);

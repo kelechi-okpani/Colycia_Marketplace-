@@ -1,6 +1,6 @@
 import { Schema, Types } from "mongoose";
-import { Listing, type IListing } from "./Listing.js";
-import { PROVIDER_CATEGORIES } from "../../config/constants.js";
+import { Listing, IListing } from "./Listing";
+import { PROVIDER_CATEGORIES } from "../../config/constants";
 
 export interface IWellnessPackage {
   _id: Types.ObjectId;
@@ -22,14 +22,13 @@ const wellnessPackageSchema = new Schema<IWellnessPackage>(
   { _id: true }
 );
 
-export const MassageTherapyListing =
-  Listing.discriminator<IMassageTherapyListing>(
-    PROVIDER_CATEGORIES.MASSAGE_THERAPY,
-    new Schema<IMassageTherapyListing>({
-      wellnessPackages: [wellnessPackageSchema],
-      homeServiceAvailable: { type: Boolean, default: true },
-      spaServiceAvailable: { type: Boolean, default: true },
-      therapistNames: [String],
-      travelFee: Number,
-    })
-  );
+export const MassageTherapyListing = Listing.discriminator<IMassageTherapyListing>(
+  PROVIDER_CATEGORIES.MASSAGE_THERAPY,
+  new Schema<IMassageTherapyListing>({
+    wellnessPackages: [wellnessPackageSchema],
+    homeServiceAvailable: { type: Boolean, default: true },
+    spaServiceAvailable: { type: Boolean, default: true },
+    therapistNames: [String],
+    travelFee: Number,
+  })
+);

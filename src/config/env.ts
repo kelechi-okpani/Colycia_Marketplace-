@@ -19,8 +19,14 @@ export const env = {
   JWT_SECRET: required("JWT_SECRET", "dev_only_insecure_secret_change_me"),
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN ?? "7d",
 
-  PAYSTACK_SECRET_KEY: process.env.PAYSTACK_SECRET_KEY ?? "",
-  FLUTTERWAVE_SECRET_KEY: process.env.FLUTTERWAVE_SECRET_KEY ?? "",
+  STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY ?? "",
+  STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET ?? "",
+
+  CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME ?? "",
+  CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY ?? "",
+  CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET ?? "",
+
+
 
   SENDGRID_API_KEY: process.env.SENDGRID_API_KEY ?? "",
   TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID ?? "",

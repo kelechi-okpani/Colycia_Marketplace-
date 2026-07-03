@@ -1,10 +1,10 @@
 import mongoose, { Schema, Document, Model, Types } from "mongoose";
 import {
   PROVIDER_CATEGORIES,
-  type ProviderCategory,
+  ProviderCategory,
   VERIFICATION_STATUS,
-  type VerificationStatus,
-} from "../config/constants.js";
+  VerificationStatus,
+} from "../config/constants";
 
 interface IVerificationDocument {
   type: string; // e.g. "GOVERNMENT_ID", "BUSINESS_CERT"
@@ -60,12 +60,7 @@ export interface IProvider extends Document {
 // change when a new vertical is added.
 const providerSchema = new Schema<IProvider>(
   {
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-      unique: true,
-    },
+    user: { type: Schema.Types.ObjectId, ref: "User", required: true, unique: true },
 
     category: {
       type: String,
@@ -133,7 +128,4 @@ const providerSchema = new Schema<IProvider>(
 providerSchema.index({ category: 1 });
 providerSchema.index({ "location.city": 1, category: 1 });
 
-export const Provider: Model<IProvider> = mongoose.model<IProvider>(
-  "Provider",
-  providerSchema
-);
+export const Provider: Model<IProvider> = mongoose.model<IProvider>("Provider", providerSchema);

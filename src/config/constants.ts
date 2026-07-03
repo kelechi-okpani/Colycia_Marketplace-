@@ -27,8 +27,7 @@ export const PROVIDER_CATEGORIES = {
   MASSAGE_THERAPY: "MASSAGE_THERAPY",
   PROFESSIONAL_THERAPY: "PROFESSIONAL_THERAPY",
 } as const;
-export type ProviderCategory =
-  (typeof PROVIDER_CATEGORIES)[keyof typeof PROVIDER_CATEGORIES];
+export type ProviderCategory = (typeof PROVIDER_CATEGORIES)[keyof typeof PROVIDER_CATEGORIES];
 
 export const VERIFICATION_STATUS = {
   UNVERIFIED: "UNVERIFIED",
@@ -36,8 +35,7 @@ export const VERIFICATION_STATUS = {
   VERIFIED: "VERIFIED",
   REJECTED: "REJECTED",
 } as const;
-export type VerificationStatus =
-  (typeof VERIFICATION_STATUS)[keyof typeof VERIFICATION_STATUS];
+export type VerificationStatus = (typeof VERIFICATION_STATUS)[keyof typeof VERIFICATION_STATUS];
 
 export const BOOKING_STATUS = {
   PENDING: "PENDING",
@@ -47,8 +45,7 @@ export const BOOKING_STATUS = {
   CANCELLED: "CANCELLED",
   DISPUTED: "DISPUTED",
 } as const;
-export type BookingStatus =
-  (typeof BOOKING_STATUS)[keyof typeof BOOKING_STATUS];
+export type BookingStatus = (typeof BOOKING_STATUS)[keyof typeof BOOKING_STATUS];
 
 export const PAYMENT_STATUS = {
   UNPAID: "UNPAID",
@@ -57,8 +54,7 @@ export const PAYMENT_STATUS = {
   REFUNDED: "REFUNDED",
   FAILED: "FAILED",
 } as const;
-export type PaymentStatus =
-  (typeof PAYMENT_STATUS)[keyof typeof PAYMENT_STATUS];
+export type PaymentStatus = (typeof PAYMENT_STATUS)[keyof typeof PAYMENT_STATUS];
 
 export const TRANSACTION_TYPE = {
   DEPOSIT: "DEPOSIT",
@@ -68,8 +64,7 @@ export const TRANSACTION_TYPE = {
   COMMISSION: "COMMISSION",
   REFUND: "REFUND",
 } as const;
-export type TransactionType =
-  (typeof TRANSACTION_TYPE)[keyof typeof TRANSACTION_TYPE];
+export type TransactionType = (typeof TRANSACTION_TYPE)[keyof typeof TRANSACTION_TYPE];
 
 export const NOTIFICATION_CHANNEL = {
   EMAIL: "EMAIL",
@@ -77,8 +72,7 @@ export const NOTIFICATION_CHANNEL = {
   PUSH: "PUSH",
   IN_APP: "IN_APP",
 } as const;
-export type NotificationChannel =
-  (typeof NOTIFICATION_CHANNEL)[keyof typeof NOTIFICATION_CHANNEL];
+export type NotificationChannel = (typeof NOTIFICATION_CHANNEL)[keyof typeof NOTIFICATION_CHANNEL];
 
 export const LISTING_STATUS = {
   DRAFT: "DRAFT",
@@ -86,5 +80,4 @@ export const LISTING_STATUS = {
   PAUSED: "PAUSED",
   ARCHIVED: "ARCHIVED",
 } as const;
-export type ListingStatus =
-  (typeof LISTING_STATUS)[keyof typeof LISTING_STATUS];
+export type ListingStatus = (typeof LISTING_STATUS)[keyof typeof LISTING_STATUS];

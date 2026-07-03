@@ -1,6 +1,6 @@
 import { Schema, Types } from "mongoose";
-import { Listing, type IListing } from "./Listing.js";
-import { PROVIDER_CATEGORIES } from "../../config/constants.js";
+import { Listing, IListing } from "./Listing";
+import { PROVIDER_CATEGORIES } from "../../config/constants";
 
 export interface ITourPackage {
   _id: Types.ObjectId;
@@ -37,8 +37,6 @@ export const TourGuideListing = Listing.discriminator<ITourGuideListing>(
     packages: [tourPackageSchema],
     languagesSpoken: [String],
     coverageAreas: [String],
-    schedule: [
-      { date: Date, isFullyBooked: { type: Boolean, default: false } },
-    ],
+    schedule: [{ date: Date, isFullyBooked: { type: Boolean, default: false } }],
   })
 );

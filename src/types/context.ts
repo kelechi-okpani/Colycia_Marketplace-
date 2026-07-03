@@ -1,4 +1,4 @@
-import type { Role } from "../config/constants.js";
+import type { Role } from "../config/constants";
 
 // Attached to req/context after JWT verification in middleware/auth.ts.
 // `null` when the request is unauthenticated (e.g. public listing search).

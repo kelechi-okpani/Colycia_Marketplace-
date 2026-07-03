@@ -1,6 +1,6 @@
 import { GraphQLError } from "graphql";
-import type { GraphQLContext } from "../types/context.js";
-import type { Role } from "../config/constants.js";
+import type { GraphQLContext } from "../types/context";
+import type { Role } from "../config/constants";
 
 export function requireAuth(ctx: GraphQLContext) {
   if (!ctx.user) {

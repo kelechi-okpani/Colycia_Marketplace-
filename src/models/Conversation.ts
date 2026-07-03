@@ -15,9 +15,7 @@ export interface IConversation extends Document {
 
 const conversationSchema = new Schema<IConversation>(
   {
-    participants: [
-      { type: Schema.Types.ObjectId, ref: "User", required: true },
-    ],
+    participants: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
     relatedBooking: { type: Schema.Types.ObjectId, ref: "Booking" },
     lastMessagePreview: String,
     lastMessageAt: Date,

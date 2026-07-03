@@ -1,6 +1,6 @@
 import { Schema, Types } from "mongoose";
-import { Listing, type IListing } from "./Listing.js";
-import { PROVIDER_CATEGORIES } from "../../config/constants.js";
+import { Listing, IListing } from "./Listing";
+import { PROVIDER_CATEGORIES } from "../../config/constants";
 
 export interface IHall {
   _id: Types.ObjectId;

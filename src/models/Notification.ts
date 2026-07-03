@@ -1,8 +1,5 @@
 import mongoose, { Schema, Document, Model, Types } from "mongoose";
-import {
-  NOTIFICATION_CHANNEL,
-  type NotificationChannel,
-} from "../config/constants.js";
+import { NOTIFICATION_CHANNEL, NotificationChannel } from "../config/constants";
 
 export interface INotification extends Document {
   user: Types.ObjectId;
@@ -19,11 +16,7 @@ export interface INotification extends Document {
 const notificationSchema = new Schema<INotification>(
   {
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-    channel: {
-      type: String,
-      enum: Object.values(NOTIFICATION_CHANNEL),
-      default: "IN_APP",
-    },
+    channel: { type: String, enum: Object.values(NOTIFICATION_CHANNEL), default: "IN_APP" },
     title: { type: String, required: true },
     body: { type: String, required: true },
     isRead: { type: Boolean, default: false },

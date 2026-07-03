@@ -1,6 +1,6 @@
 import { Schema, Types } from "mongoose";
-import { Listing, type IListing } from "./Listing.js";
-import { PROVIDER_CATEGORIES } from "../../config/constants.js";
+import { Listing, IListing } from "./Listing";
+import { PROVIDER_CATEGORIES } from "../../config/constants";
 
 export interface ISessionType {
   _id: Types.ObjectId;
@@ -34,22 +34,13 @@ const sessionTypeSchema = new Schema<ISessionType>(
     name: String,
     durationMinutes: Number,
     price: Number,
-    mode: {
-      type: String,
-      enum: ["ONLINE", "IN_PERSON", "BOTH"],
-      default: "BOTH",
-    },
+    mode: { type: String, enum: ["ONLINE", "IN_PERSON", "BOTH"], default: "BOTH" },
   },
   { _id: true }
 );
 
 const subscriptionPlanSchema = new Schema<ISubscriptionPlan>(
-  {
-    name: String,
-    sessionsIncluded: Number,
-    price: Number,
-    billingCycle: String,
-  },
+  { name: String, sessionsIncluded: Number, price: Number, billingCycle: String },
   { _id: true }
 );
 

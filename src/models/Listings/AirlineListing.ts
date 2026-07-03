@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
-import { Listing, type IListing } from "./Listing.js";
-import { PROVIDER_CATEGORIES } from "../../config/constants.js";
+import { Listing, IListing } from "./Listing";
+import { PROVIDER_CATEGORIES } from "../../config/constants";
 
 // Flights are the one category where we rely on an external API
 // (e.g. Amadeus, Duffel, Travelport) for live search/pricing/inventory

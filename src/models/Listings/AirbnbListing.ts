@@ -1,6 +1,6 @@
 import { Schema } from "mongoose";
-import { Listing, type IListing } from "./Listing.js";
-import { PROVIDER_CATEGORIES } from "../../config/constants.js";
+import { Listing, IListing } from "./Listing";
+import { PROVIDER_CATEGORIES } from "../../config/constants";
 
 export interface IAirbnbListing extends IListing {
   propertyType?: "APARTMENT" | "HOUSE" | "STUDIO" | "SHARED_ROOM" | "VILLA";
@@ -16,10 +16,7 @@ export interface IAirbnbListing extends IListing {
 export const AirbnbListing = Listing.discriminator<IAirbnbListing>(
   PROVIDER_CATEGORIES.AIRBNB_HOST,
   new Schema<IAirbnbListing>({
-    propertyType: {
-      type: String,
-      enum: ["APARTMENT", "HOUSE", "STUDIO", "SHARED_ROOM", "VILLA"],
-    },
+    propertyType: { type: String, enum: ["APARTMENT", "HOUSE", "STUDIO", "SHARED_ROOM", "VILLA"] },
     bedrooms: Number,
     bathrooms: Number,
     maxGuests: Number,

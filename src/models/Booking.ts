@@ -1,12 +1,12 @@
 import mongoose, { Schema, Document, Model, Types } from "mongoose";
 import {
   BOOKING_STATUS,
-  type BookingStatus,
+  BookingStatus,
   PAYMENT_STATUS,
-  type PaymentStatus,
+  PaymentStatus,
   PROVIDER_CATEGORIES,
-  type ProviderCategory,
-} from "../config/constants.js";
+  ProviderCategory,
+} from "../config/constants";
 
 export interface IBooking extends Document {
   customer: Types.ObjectId;
@@ -52,11 +52,7 @@ const bookingSchema = new Schema<IBooking>(
     customer: { type: Schema.Types.ObjectId, ref: "User", required: true },
     provider: { type: Schema.Types.ObjectId, ref: "Provider", required: true },
     listing: { type: Schema.Types.ObjectId, ref: "Listing", required: true },
-    category: {
-      type: String,
-      enum: Object.values(PROVIDER_CATEGORIES),
-      required: true,
-    },
+    category: { type: String, enum: Object.values(PROVIDER_CATEGORIES), required: true },
 
     selection: { type: Schema.Types.Mixed, default: {} },
 
@@ -94,7 +90,4 @@ bookingSchema.index({ customer: 1, createdAt: -1 });
 bookingSchema.index({ provider: 1, status: 1 });
 bookingSchema.index({ listing: 1 });
 
-export const Booking: Model<IBooking> = mongoose.model<IBooking>(
-  "Booking",
-  bookingSchema
-);
+export const Booking: Model<IBooking> = mongoose.model<IBooking>("Booking", bookingSchema);

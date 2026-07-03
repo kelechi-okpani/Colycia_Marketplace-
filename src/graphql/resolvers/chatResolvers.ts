@@ -1,34 +1,26 @@
 import { GraphQLError } from "graphql";
-import { Conversation } from "../../models/Conversation.js";
-import { Message } from "../../models/Message.js";
-import { Booking } from "../../models/Booking.js";
-import { requireAuth } from "../../middleware/permissions.js";
-import type { GraphQLContext } from "../../types/context.js";
+import { Conversation } from "../../models/Conversation";
+import { Message } from "../../models/Message";
+import { Booking } from "../../models/Booking";
+import { requireAuth } from "../../middleware/permissions";
+import type { GraphQLContext } from "../../types/context";
 
 export const chatResolvers = {
   Query: {
     myConversations: async (_: unknown, __: unknown, ctx: GraphQLContext) => {
       const user = requireAuth(ctx);
-      return Conversation.find({ participants: user.id }).sort({
-        lastMessageAt: -1,
-      });
+      return Conversation.find({ participants: user.id }).sort({ lastMessageAt: -1 });
     },
 
     conversationMessages: async (
       _: unknown,
-      {
-        conversationId,
-        page = 1,
-        pageSize = 30,
-      }: { conversationId: string; page?: number; pageSize?: number },
+      { conversationId, page = 1, pageSize = 30 }: { conversationId: string; page?: number; pageSize?: number },
       ctx: GraphQLContext
     ) => {
       const user = requireAuth(ctx);
       const convo = await Conversation.findById(conversationId);
       if (!convo || !convo.participants.map(String).includes(user.id)) {
-        throw new GraphQLError("You are not part of this conversation.", {
-          extensions: { code: "FORBIDDEN" },
-        });
+        throw new GraphQLError("You are not part of this conversation.", { extensions: { code: "FORBIDDEN" } });
       }
 
       return Message.find({ conversation: conversationId })
@@ -69,19 +61,13 @@ export const chatResolvers = {
 
     sendMessage: async (
       _: unknown,
-      {
-        conversationId,
-        body,
-        attachments,
-      }: { conversationId: string; body: string; attachments?: string[] },
+      { conversationId, body, attachments }: { conversationId: string; body: string; attachments?: string[] },
       ctx: GraphQLContext
     ) => {
       const user = requireAuth(ctx);
       const convo = await Conversation.findById(conversationId);
       if (!convo || !convo.participants.map(String).includes(user.id)) {
-        throw new GraphQLError("You are not part of this conversation.", {
-          extensions: { code: "FORBIDDEN" },
-        });
+        throw new GraphQLError("You are not part of this conversation.", { extensions: { code: "FORBIDDEN" } });
       }
 
       const message = await Message.create({
@@ -99,11 +85,7 @@ export const chatResolvers = {
       return message;
     },
 
-    markConversationRead: async (
-      _: unknown,
-      { conversationId }: { conversationId: string },
-      ctx: GraphQLContext
-    ) => {
+    markConversationRead: async (_: unknown, { conversationId }: { conversationId: string }, ctx: GraphQLContext) => {
       const user = requireAuth(ctx);
       await Message.updateMany(
         { conversation: conversationId, readBy: { $ne: user.id } },

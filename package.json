@@ -1,37 +1,37 @@
 {
-  "name": "backend",
+  "name": "servicehub-backend",
   "version": "1.0.0",
-  "main": "index.js",
-  "type": "module",
+  "description": "Multi-vertical services marketplace API (hotels, airbnb, car rentals, food, salons, flights, tours, makeup, photography, event centers, massage, therapy)",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "seed": "ts-node-dev --transpile-only src/utils/seed.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "@apollo/server": "^5.5.1",
-    "@graphql-tools/merge": "^9.1.10",
-    "@graphql-tools/schema": "^10.0.34",
-    "bcryptjs": "^3.0.3",
-    "body-parser": "^2.3.0",
-    "cors": "^2.8.6",
-    "dataloader": "^2.2.3",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "graphql": "^16.14.2",
-    "graphql-scalars": "^1.25.0",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.7.3"
+    "@apollo/server": "^4.11.3",
+    "@graphql-tools/merge": "^9.0.7",
+    "@graphql-tools/schema": "^10.0.6",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dataloader": "^2.2.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "graphql": "^16.9.0",
+    "graphql-scalars": "^1.23.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.0",
+    "stripe": "^22.3.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
-    "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^26.1.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^22.5.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^6.0.3"
+    "typescript": "^5.5.4"
   }
 }
