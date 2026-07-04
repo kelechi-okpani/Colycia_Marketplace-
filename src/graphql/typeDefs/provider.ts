@@ -32,6 +32,12 @@ export const providerTypeDefs = `#graphql
     lng: Float
   }
 
+  type PayoutDetails {
+    accountNumber: String
+    bankCode: String
+    accountName: String
+  }
+
   type Provider {
     id: ID!
     user: User!
@@ -47,6 +53,7 @@ export const providerTypeDefs = `#graphql
     ratingAverage: Float!
     ratingCount: Int!
     isSuspended: Boolean!
+    payoutDetails: PayoutDetails
     createdAt: DateTime!
   }
 
@@ -87,6 +94,12 @@ export const providerTypeDefs = `#graphql
     url: String!
   }
 
+  input UpdatePayoutDetailsInput {
+    accountNumber: String!
+    bankCode: String!
+    accountName: String!
+  }
+
   extend type Query {
     provider(id: ID!): Provider
     myProviderProfile: Provider
@@ -97,6 +110,7 @@ export const providerTypeDefs = `#graphql
     createProviderProfile(input: CreateProviderProfileInput!): Provider!
     updateProviderProfile(input: UpdateProviderProfileInput!): Provider!
     uploadVerificationDocument(input: UploadVerificationDocInput!): Provider!
+    updatePayoutDetails(input: UpdatePayoutDetailsInput!): Provider!
     # Admin only
     reviewProviderVerification(providerId: ID!, approve: Boolean!, rejectionReason: String): Provider!
     suspendProvider(providerId: ID!, reason: String!): Provider!

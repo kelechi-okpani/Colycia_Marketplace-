@@ -50,6 +50,12 @@ export interface IProvider extends Document {
   ratingCount: number;
   isSuspended: boolean;
   suspensionReason?: string;
+  payoutDetails?: {
+    accountNumber?: string;
+    bankCode?: string;
+    accountName?: string;
+    recipientCode?: string; // cached Paystack transfer-recipient code
+  };
   createdAt: Date;
   updatedAt: Date;
 }
@@ -121,6 +127,13 @@ const providerSchema = new Schema<IProvider>(
 
     isSuspended: { type: Boolean, default: false },
     suspensionReason: String,
+
+    payoutDetails: {
+      accountNumber: String,
+      bankCode: String,
+      accountName: String,
+      recipientCode: String,
+    },
   },
   { timestamps: true }
 );

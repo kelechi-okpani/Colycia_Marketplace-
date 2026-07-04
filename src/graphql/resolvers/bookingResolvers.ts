@@ -6,6 +6,7 @@ import { User } from "../../models/User";
 import { requireAuth, requireRole } from "../../middleware/permissions";
 import { computeBookingPrice } from "../../utils/pricing";
 import { sendNotification } from "../../services/notificationService";
+import { creditProviderForBooking } from "../../services/walletService";
 import { ROLES, BOOKING_STATUS, BookingStatus } from "../../config/constants";
 import type { GraphQLContext } from "../../types/context";
 
@@ -184,12 +185,24 @@ async function transitionBooking(
   await booking.save();
 
   if (next === BOOKING_STATUS.COMPLETED) {
+    await creditProviderForBooking(booking);
+
     await sendNotification({
       userId: booking.customer,
       title: "Booking completed",
       body: "Your booking is complete. Leave a review to help other customers!",
       relatedBooking: booking._id,
     });
+
+    const provider = await Provider.findById(booking.provider);
+    if (provider) {
+      await sendNotification({
+        userId: provider.user,
+        title: "Payment received",
+        body: `${booking.subtotal} ${booking.currency} has been added to your wallet for a completed booking.`,
+        relatedBooking: booking._id,
+      });
+    }
   }
 
   return booking;

@@ -93,6 +93,21 @@ export const providerResolvers = {
       return provider;
     },
 
+    updatePayoutDetails: async (
+      _: unknown,
+      { input }: { input: { accountNumber: string; bankCode: string; accountName: string } },
+      ctx: GraphQLContext
+    ) => {
+      const authUser = requireRole(ctx, ROLES.PROVIDER);
+      const provider = await Provider.findOneAndUpdate(
+        { user: authUser.id },
+        { payoutDetails: input }, // recipientCode is cached separately once Paystack recipient creation is wired in
+        { new: true }
+      );
+      if (!provider) throw new GraphQLError("Provider profile not found.", { extensions: { code: "NOT_FOUND" } });
+      return provider;
+    },
+
     reviewProviderVerification: async (
       _: unknown,
       { providerId, approve, rejectionReason }: { providerId: string; approve: boolean; rejectionReason?: string },

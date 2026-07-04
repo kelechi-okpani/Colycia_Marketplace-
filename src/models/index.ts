@@ -12,6 +12,12 @@ export { Conversation, IConversation } from "./Conversation";
 export { Message, IMessage } from "./Message";
 export { Notification, INotification } from "./Notification";
 
+
+export { AuditLog, IAuditLog } from "./auditlog";
+export { FlightBooking, IFlightBooking } from "./flightbooking";
+
+
+
 export { Listing, IListing } from "./listings/Listing";
 export { HotelListing, IHotelListing } from "./listings/HotelListing";
 export { AirbnbListing, IAirbnbListing } from "./listings/AirbnbListing";

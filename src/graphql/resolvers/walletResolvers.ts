@@ -3,10 +3,12 @@ import { Wallet } from "../../models/Wallet";
 import { Transaction } from "../../models/Transaction";
 import { requireAuth } from "../../middleware/permissions";
 import { initializePayment, verifyPayment } from "../../services/paymentService";
-import { markDepositSuccessful } from "../../services/paymentService";
+import { markDepositSuccessful } from "../../services/walletService";
 import { generateReference } from "../../utils/reference";
 import { TRANSACTION_TYPE } from "../../config/constants";
 import type { GraphQLContext } from "../../types/context";
+
+
 
 export const walletResolvers = {
   Query: {
